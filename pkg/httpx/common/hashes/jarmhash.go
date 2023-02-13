@@ -2,7 +2,7 @@ package hashes
 
 import (
 	"fmt"
-	"github.com/w3security/jarm-go"
+	"github.com/w3security/jarm-go/cmd/jarmscan"
 	"github.com/w3security/reconbot/pkg/httpx/common/regexhelper"
 	"golang.org/x/net/proxy"
 	"net"
