@@ -5,12 +5,13 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
-	"github.com/w3security/reconbot/lib/util"
 	"net"
 	"net/url"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/w3security/reconbot/lib/util"
 )
 
 type CheckCbkFuc func(data byte) bool

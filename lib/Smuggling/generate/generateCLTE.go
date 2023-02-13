@@ -2,12 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/w3security/reconbot/lib/Smuggling"
-	"github.com/w3security/reconbot/lib/socket"
-	"github.com/w3security/reconbot/lib/util"
 	"net/url"
 	"strings"
 	"sync"
+
+	"github.com/w3security/reconbot/lib/Smuggling"
+	"github.com/w3security/reconbot/lib/socket"
+	"github.com/w3security/reconbot/lib/util"
 )
 
 type CLTE struct {

@@ -1,9 +1,10 @@
 package Smuggling
 
 import (
-	"github.com/w3security/reconbot/lib/socket"
 	"log"
 	"strings"
+
+	"github.com/w3security/reconbot/lib/socket"
 )
 
 type Base struct {
