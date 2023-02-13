@@ -1,13 +1,12 @@
 package ksubdomain
 
 import (
-	"os"
-	"regexp"
-
 	"github.com/boy-hack/ksubdomain/core/conf"
 	"github.com/boy-hack/ksubdomain/core/gologger"
 	cli "github.com/urfave/cli/v2"
 	"github.com/w3security/reconbot/lib/util"
+	"os"
+	"regexp"
 )
 
 // cat $HOME/MyWork/reconbot/pkg/ksubdomain/*.go|grep "github.com/boy-hack/ksubdomain"|sed 's/"//g'|sort -u|uniq|xargs -I % go get %

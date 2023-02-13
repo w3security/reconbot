@@ -4,10 +4,11 @@ import (
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
-	"github.com/w3security/reconbot/lib/util"
-	"github.com/w3security/reconbot/projectdiscovery/subfinder"
 	"reflect"
 	"strings"
+
+	"github.com/w3security/reconbot/lib/util"
+	"github.com/w3security/reconbot/projectdiscovery/subfinder"
 )
 
 // 判断s是否在数组a中
