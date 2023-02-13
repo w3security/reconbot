@@ -1,0 +1,27 @@
+env:
+  - GO111MODULE=on
+before:
+  hooks:
+    - go mod tidy
+project_name: reconbot
+builds:
+  - id: reconbot-darwin
+    ldflags:
+      - -s -w
+    binary: reconbot
+    env:
+      - CGO_ENABLED=1
+    main: main.go
+    goos:
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+- format: zip
+  replacements:
+      darwin: macOS
+
+checksum:
+  name_template: "{{ .ProjectName }}-mac-checksums.txt"
