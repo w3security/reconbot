@@ -1,16 +1,17 @@
 package hashes
 
 import (
+
+import (
 	"fmt"
+	"github.com/w3security/jarm-go"
+	"github.com/w3security/reconbot/pkg/httpx/common/regexhelper"
+	"golang.org/x/net/proxy"
 	"net"
 	"net/url"
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/w3security/jarm-go"
-	"github.com/w3security/reconbot/pkg/httpx/common/regexhelper"
-	"golang.org/x/net/proxy"
 )
 
 const defaultPort int = 443
