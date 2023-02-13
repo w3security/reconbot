@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hktalent/jarm-go"
+	"github.com/w3security/jarm-go"
 	"github.com/w3security/reconbot/pkg/httpx/common/regexhelper"
 	"golang.org/x/net/proxy"
 )

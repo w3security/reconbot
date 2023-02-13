@@ -2,21 +2,22 @@ package util
 
 import (
 	"fmt"
+	"runtime"
+
 	"github.com/apex/log"
 	"github.com/pkg/errors"
 	"github.com/projectdiscovery/gologger"
 	"github.com/tj/go-update"
 	"github.com/tj/go-update/progress"
 	githubUpdateStore "github.com/tj/go-update/stores/github"
-	"runtime"
 )
 
 const Version = `2.7.9`
 
-var MyName = "scan4all"
+var MyName = "reconbot"
 
 // 更新到最新版本
-func UpdateScan4allVersionToLatest(verbose bool) error {
+func UpdatereconbotVersionToLatest(verbose bool) error {
 	if verbose {
 		log.SetLevel(log.DebugLevel)
 	}
@@ -30,8 +31,8 @@ func UpdateScan4allVersionToLatest(verbose bool) error {
 	m := &update.Manager{
 		Command: command,
 		Store: &githubUpdateStore.Store{
-			Owner:   "hktalent",
-			Repo:    "Scan4all_Pro",
+			Owner:   "w3security",
+			Repo:    "reconbot_Pro",
 			Version: Version,
 		},
 	}
@@ -40,7 +41,7 @@ func UpdateScan4allVersionToLatest(verbose bool) error {
 		return errors.Wrap(err, "could not fetch latest release")
 	}
 	if len(releases) == 0 {
-		gologger.Info().Msgf("No new updates found for scan4all engine!")
+		gologger.Info().Msgf("No new updates found for reconbot engine!")
 		return nil
 	}
 

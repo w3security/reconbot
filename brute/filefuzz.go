@@ -3,8 +3,6 @@ package brute
 import (
 	"context"
 	_ "embed"
-	"github.com/antlabs/strsim"
-	"github.com/w3security/reconbot/lib/util"
 	"log"
 	"net/url"
 	"regexp"
@@ -12,17 +10,23 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/antlabs/strsim"
+	"github.com/w3security/reconbot/lib/util"
 )
 
 // 备份、敏感文件后缀
+//
 //go:embed dicts/bakSuffix.txt
 var bakSuffix string
 
 // 备份、敏感文件 http头类型 ContentType 检测
+//
 //go:embed dicts/fuzzContentType1.txt
 var fuzzct string
 
 // 敏感文件前缀
+//
 //go:embed dicts/prefix.txt
 var szPrefix string
 
@@ -86,7 +90,8 @@ func reqPage(u string) (*util.Page, *util.Response, error) {
 }
 
 // 敏感文件头信息检测:
-//  检测头信息是否有敏感文件、本份文件、流文件等敏感信息
+//
+//	检测头信息是否有敏感文件、本份文件、流文件等敏感信息
 func CheckBakPage(req *util.Response) bool {
 	if x0, ok := (*req.Header)["Content-Type"]; ok && 0 < len(x0) {
 		x0B := []byte(x0[0])
@@ -134,7 +139,7 @@ func init() {
 //var file_not_support = "file_not_support"
 
 // 绝对404请求文件
-//var RandStr = file_not_support + "_scan4all"
+//var RandStr = file_not_support + "_reconbot"
 
 // 随机10个字符串
 var RandStr4Cookie = util.RandStringRunes(10)
@@ -351,9 +356,10 @@ var reg1 = regexp.MustCompile("(?i)<meta.*http-equiv\\s*=\\s*\"refresh\".*conten
 var reg2 = regexp.MustCompile("(window|self|top)\\.location\\.href\\s*=")
 
 // 跳转检测
-//  1、状态码跳转：301 代表永久性转移(Permanently Moved)；302 redirect: 302 代表暂时性转移(Temporarily Moved )
-//  2、html刷新跳转
-//  3、js 跳转
+//
+//	1、状态码跳转：301 代表永久性转移(Permanently Moved)；302 redirect: 302 代表暂时性转移(Temporarily Moved )
+//	2、html刷新跳转
+//	3、js 跳转
 func CheckDirckt(fuzzPage *util.Page, req *util.Response) bool {
 	if nil == fuzzPage || nil == req {
 		return false

@@ -6,8 +6,6 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
-	"github.com/karlseguin/ccache"
-	"github.com/spf13/viper"
 	"io/fs"
 	"io/ioutil"
 	"log"
@@ -20,6 +18,9 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/karlseguin/ccache"
+	"github.com/spf13/viper"
 )
 
 // 字符串包含关系，且大小写不敏感
@@ -110,7 +111,7 @@ var TmpFile = map[string][]*os.File{}
 
 // 临时结果文件，例如 nmap
 func GetTempFile(t string) *os.File {
-	tempInput, err := ioutil.TempFile("", "scan4all-out*")
+	tempInput, err := ioutil.TempFile("", "reconbot-out*")
 	if err != nil {
 		log.Println(err)
 		return nil
@@ -364,7 +365,7 @@ func GetSha1(a ...interface{}) string {
 	return fmt.Sprintf("%x", bs)
 }
 
-var Abs404 = "/scan4all404"
+var Abs404 = "/reconbot404"
 var defaultInteractionDuration time.Duration = 180 * time.Second
 
 func TestRepeat(a ...interface{}) bool {

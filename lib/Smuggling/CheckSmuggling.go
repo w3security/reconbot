@@ -2,11 +2,12 @@ package Smuggling
 
 import (
 	"fmt"
-	"github.com/w3security/reconbot/lib/socket"
-	"github.com/w3security/reconbot/lib/util"
 	"log"
 	"net/url"
 	"strings"
+
+	"github.com/w3security/reconbot/lib/socket"
+	"github.com/w3security/reconbot/lib/util"
 )
 
 func E2EC(s string) string {
@@ -33,32 +34,32 @@ func checkSmuggling4Poc(ClTePayload *[]string, nTimes int, r1 *Smuggling, r *soc
 			// send result
 			util.SendAnyData(&util.SimpleVulResult{
 				Url:     r.UrlPath,
-				VulKind: string(util.Scan4all),
+				VulKind: string(util.reconbot),
 				VulType: (*r1).GetVulType(),
 				Payload: x,
-			}, util.Scan4all)
+			}, util.reconbot)
 			break
 		}
 	}
 }
 
 /*
- check HTTP Request Smuggling
-   可以利用走私尝试访问，被常规手段屏蔽的路径，例如 weblogic 的页面
-  https://portswigger.net/web-security/request-smuggling/finding
-  https://hackerone.com/reports/1630668
-  https://github.com/nodejs/llhttp/blob/master/src/llhttp/http.ts#L483
-  1、每个目标的登陆页面只做一次检测，也就是发现你登陆页面的路径可以做一次检测
-  2、每个目标相同上下文的页面只做一次检测，爬虫发现的不同上下文各做一次检测
-  szBody 是为了 相同url 相同payload 的情况下，只发一次请求，进行多次判断而设计，Smuggling 的场景通常不存在
+	 check HTTP Request Smuggling
+	   可以利用走私尝试访问，被常规手段屏蔽的路径，例如 weblogic 的页面
+	  https://portswigger.net/web-security/request-smuggling/finding
+	  https://hackerone.com/reports/1630668
+	  https://github.com/nodejs/llhttp/blob/master/src/llhttp/http.ts#L483
+	  1、每个目标的登陆页面只做一次检测，也就是发现你登陆页面的路径可以做一次检测
+	  2、每个目标相同上下文的页面只做一次检测，爬虫发现的不同上下文各做一次检测
+	  szBody 是为了 相同url 相同payload 的情况下，只发一次请求，进行多次判断而设计，Smuggling 的场景通常不存在
 
- 做一次 http
-	util.PocCheck_pipe <- &util.PocCheck{
-		Wappalyzertechnologies: &[]string{"httpCheckSmuggling"},
-		URL:                    finalURL,
-		FinalURL:               finalURL,
-		Checklog4j:             false,
-	}
+	 做一次 http
+		util.PocCheck_pipe <- &util.PocCheck{
+			Wappalyzertechnologies: &[]string{"httpCheckSmuggling"},
+			URL:                    finalURL,
+			FinalURL:               finalURL,
+			Checklog4j:             false,
+		}
 */
 func DoCheckSmuggling(szUrl string, szBody string) {
 	for _, x := range payload {
@@ -77,11 +78,12 @@ func DoCheckSmuggling(szUrl string, szBody string) {
 }
 
 // 构造走私，用来访问被屏蔽的页面
-//  确认存在走私漏洞后，可以继续基于走私 走以便filefuzz
-//  1、首先 szUrl必须是可访问的 200，否则可能会导致误判
-//  @szUrl 设施走私的目标
-//  @smugglinUrlPath 希望走私能访问到到页面，例如 /console
-//  @secHost 第二段头的host
+//
+//	确认存在走私漏洞后，可以继续基于走私 走以便filefuzz
+//	1、首先 szUrl必须是可访问的 200，否则可能会导致误判
+//	@szUrl 设施走私的目标
+//	@smugglinUrlPath 希望走私能访问到到页面，例如 /console
+//	@secHost 第二段头的host
 func GenerateHttpSmugglingPay(szUrl, smugglinUrlPath, secHost string) string {
 	a := []string{`POST %s HTTP/1.1
 Host: %s

@@ -519,9 +519,9 @@ github.com/hashicorp/hcl/json/token
 # github.com/hbakhtiyor/strsim v0.0.0-20190107154042-4d2bbb273edf
 ## explicit
 github.com/hbakhtiyor/strsim
-# github.com/hktalent/jarm-go v0.0.0-20220918133110-7801447b6267
+# github.com/w3security/jarm-go v0.0.0-20220918133110-7801447b6267
 ## explicit; go 1.18
-github.com/hktalent/jarm-go
+github.com/w3security/jarm-go
 # github.com/huin/asn1ber v0.0.0-20120622192748-af09f62e6358
 ## explicit
 github.com/huin/asn1ber

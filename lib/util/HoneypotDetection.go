@@ -17,11 +17,11 @@ var hdCache sync.Map
 
 var ipCIDS = regexp.MustCompile("^(\\d+\\.){3}\\d+\\/\\d+$")
 
-//  检查 蜜罐 Server信息，check Honeypor server info
+// 检查 蜜罐 Server信息，check Honeypor server info
 func CheckHoneyportDetection4HeaderServer(server, szUrl string) bool {
 	if 50 < len(server) || 3 < len(strings.Split(server, ",")) {
 		hdCache.Store(szUrl, true)
-		SendLog(szUrl, string(Scan4all), "Honeypot found", "")
+		SendLog(szUrl, string(reconbot), "Honeypot found", "")
 		return true
 	}
 	return false

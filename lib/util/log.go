@@ -26,12 +26,12 @@ var Output = ""
 func SendLog(szUrl, szVulType, Msg, Payload string) {
 	v := &SimpleVulResult{
 		Url:     szUrl,
-		VulKind: string(Scan4all),
+		VulKind: string(reconbot),
 		VulType: szVulType,
 		Payload: Payload,
 		Msg:     strings.TrimSpace(Msg) + " " + szVulType,
 	}
-	SendAnyData(v, Scan4all)
+	SendAnyData(v, reconbot)
 	writeoutput(v)
 }
 

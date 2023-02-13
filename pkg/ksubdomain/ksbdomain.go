@@ -10,7 +10,7 @@ import (
 	"github.com/w3security/reconbot/lib/util"
 )
 
-// cat $HOME/MyWork/scan4all/pkg/ksubdomain/*.go|grep "github.com/boy-hack/ksubdomain"|sed 's/"//g'|sort -u|uniq|xargs -I % go get %
+// cat $HOME/MyWork/reconbot/pkg/ksubdomain/*.go|grep "github.com/boy-hack/ksubdomain"|sed 's/"//g'|sort -u|uniq|xargs -I % go get %
 func DoSubfinder(a []string, out chan string, done chan bool) {
 	if "true" == util.GetVal("EnableKsubdomain") {
 		s1 := util.GetVal("KsubdomainRegxp")

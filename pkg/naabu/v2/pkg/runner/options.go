@@ -81,7 +81,7 @@ func ParseOptions() *Options {
 	options := &Options{}
 
 	flagSet := goflags.NewFlagSet()
-	flagSet.SetDescription(`scan4all is ` + util.Version)
+	flagSet.SetDescription(`reconbot is ` + util.Version)
 
 	flagSet.CreateGroup("input", "Input",
 		flagSet.NormalizedStringSliceVarP(&options.Host, "host", "", []string{}, "hosts to scan ports for (comma-separated)"),
@@ -142,7 +142,7 @@ func ParseOptions() *Options {
 		flagSet.BoolVar(&options.Resume, "resume", false, "resume scan using resume.cfg"),
 		flagSet.BoolVar(&options.Stream, "stream", false, "stream mode (disables resume, nmap, verify, retries, shuffling, etc)"),
 		flagSet.BoolVar(&options.Passive, "passive", false, "display passive open ports using shodan internetdb api"),
-		flagSet.BoolVar(&options.Update, "update", false, "update scan4all to latest version"),
+		flagSet.BoolVar(&options.Update, "update", false, "update reconbot to latest version"),
 	)
 
 	flagSet.CreateGroup("optimization", "Optimization",

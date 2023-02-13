@@ -2,15 +2,16 @@ package api
 
 import (
 	"encoding/json"
-	"github.com/w3security/reconbot/lib/util"
-	"github.com/w3security/reconbot/pkg/hydra"
-	naaburunner "github.com/w3security/reconbot/pkg/naabu/v2/pkg/runner"
-	"github.com/projectdiscovery/gologger"
 	"io"
 	"io/ioutil"
 	"log"
 	"os"
 	"runtime"
+
+	"github.com/projectdiscovery/gologger"
+	"github.com/w3security/reconbot/lib/util"
+	"github.com/w3security/reconbot/pkg/hydra"
+	naaburunner "github.com/w3security/reconbot/pkg/naabu/v2/pkg/runner"
 )
 
 // 逐步实现支持 多实例 接口 运行
@@ -18,7 +19,7 @@ func StartScan(oOpts *map[string]interface{}) {
 	util.DoSyncFunc(func() {
 		options := naaburunner.ParseOptions()
 		if options.Update {
-			util.UpdateScan4allVersionToLatest(true)
+			util.UpdatereconbotVersionToLatest(true)
 			return
 		}
 		//if options.Ports != "" {

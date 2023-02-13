@@ -6,10 +6,10 @@
 *.dll
 *.so
 *.dylib
-scan4all
+reconbot
 release
 .DbCache
-scan4all_linux
+reconbot_linux
 .DS_Store
 
 # Test binary, built with `go test -c`

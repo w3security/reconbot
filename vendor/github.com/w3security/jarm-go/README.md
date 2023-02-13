@@ -6,7 +6,7 @@ This is a Go implementation of [JARM](https://github.com/salesforce/jarm).
 
 # jarmscan
 
-To install jarmscan, download a binary from the [releases](https://github.com/hktalent/jarm-go/releases) page or install using `go install github.com/hktalent/jarm-go/cmd/jarmscan@latest`.
+To install jarmscan, download a binary from the [releases](https://github.com/w3security/jarm-go/releases) page or install using `go install github.com/w3security/jarm-go/cmd/jarmscan@latest`.
 
 To run a scan, provide a list of targets. The following examples are all supported:
 
