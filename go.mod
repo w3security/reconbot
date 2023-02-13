@@ -88,7 +88,6 @@ require (
 	github.com/boy-hack/ksubdomain v1.9.5
 	github.com/chromedp/cdproto v0.0.0-20220914223734-4ab9dc957c3e
 	github.com/chromedp/chromedp v0.8.5
-	github.com/codegangsta/inject v0.0.0-20150114235600-33e0aa1cb7c0
 	github.com/denisenkom/go-mssqldb v0.12.2
 	github.com/dgraph-io/badger v1.6.2
 	github.com/dlclark/regexp2 v1.7.0
@@ -99,6 +98,7 @@ require (
 	github.com/google/go-github v17.0.0+incompatible
 	github.com/gorilla/websocket v1.5.0
 	github.com/gosnmp/gosnmp v1.35.0
+	github.com/w3security/jarm-go v0.0.0-20220918133110-7801447b6267
 	github.com/huin/asn1ber v0.0.0-20120622192748-af09f62e6358
 	github.com/icodeface/tls v0.0.0-20190904083142-17aec93c60e5
 	github.com/jlaffaye/ftp v0.1.0
@@ -112,7 +112,6 @@ require (
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/olekukonko/tablewriter v0.0.5
 	github.com/olivere/elastic v6.2.37+incompatible
-	github.com/panjf2000/ants/v2 v2.5.0
 	github.com/projectdiscovery/folderutil v0.0.0-20220523100846-d6161a49c221
 	github.com/projectdiscovery/iputil v0.0.0-20220620153941-036d511e4097
 	github.com/projectdiscovery/nuclei-updatecheck-api v0.0.0-20220726130814-981d44a34f84
@@ -245,6 +244,7 @@ require (
 	github.com/nwaples/rardecode v1.1.3 // indirect
 	github.com/openrdap/rdap v0.9.1-0.20191017185644-af93e7ef17b7 // indirect
 	github.com/owenrumney/go-sarif/v2 v2.1.2 // indirect
+	github.com/panjf2000/ants/v2 v2.5.0 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
