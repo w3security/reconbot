@@ -10,8 +10,7 @@ RUN apt update -y && apt install -y  --no-install-recommends \
     libpcap-dev \
     golang
 
-RUN apt-get --yes install git \
-    && git clone https://github.com/w3security/reconbot.git \
+RUN git clone https://github.com/w3security/reconbot.git \
     && cd reconbot \
     && go build
 
