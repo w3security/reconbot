@@ -1,8 +1,6 @@
 package hashes
 
 import (
-
-import (
 	"fmt"
 	"github.com/w3security/jarm-go"
 	"github.com/w3security/reconbot/pkg/httpx/common/regexhelper"
