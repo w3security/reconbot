@@ -1,27 +1,34 @@
 {
-      "Name": "360 TianQing ccid SQL injectable",
-      "Level": "2",
-      "Tags": [],
-      "GobyQuery": "app=\"360-TianQing\"",
-      "Description": "The attacker can get the server permission by injecting SQL into the upload Trojan",
-      "Product": "360 TianQing",
-      "Homepage": "htp://360.cn",
-      "Author": "PeiQi",
-      "Impact": "<p>The attacker can get the server permission by injecting SQL into the upload Trojan<br></p>",
-      "Recommandation": "",
-      "References": [
-            "http://wiki.peiqi.tech"
+      "Name": "Apache Airflow Unauthorized",
+      "Level": "3",
+      "Tags": [
+            "Unauthorized"
       ],
+      "GobyQuery": "app=\"APACHE-Airflow\"",
+      "Description": "remote attacker to gain unauthorized access to a targeted system",
+      "Product": "APACHE-Airflow",
+      "Homepage": "https://airflow.apache.org/",
+      "Author": "aetkrad",
+      "Impact": "<p>This allowed unauthenticated users to hit that endpoint to add/modify Airflow variables used in DAGs<br></p>",
+      "Recommendation": "",
+      "References": [],
+      "HasExp": false,
+      "ExpParams": null,
+      "ExpTips": {
+            "Type": "",
+            "Content": ""
+      },
       "ScanSteps": [
             "AND",
             {
                   "Request": {
                         "method": "GET",
-                        "uri": "/api/dp/rptsvcsyncpoint?ccid=1",
+                        "uri": "/admin/",
                         "follow_redirect": true,
-                        "header": {},
+                        "header": null,
                         "data_type": "text",
-                        "data": ""
+                        "data": "",
+                        "set_variable": []
                   },
                   "ResponseTest": {
                         "type": "group",
@@ -38,28 +45,23 @@
                                     "type": "item",
                                     "variable": "$body",
                                     "operation": "contains",
-                                    "value": "result",
+                                    "value": "Airflow - DAGs",
                                     "bz": ""
                               },
                               {
                                     "type": "item",
                                     "variable": "$body",
                                     "operation": "contains",
-                                    "value": "success",
-                                    "bz": ""
-                              },
-                              {
-                                    "type": "item",
-                                    "variable": "$body",
-                                    "operation": "not contains",
-                                    "value": "10001",
+                                    "value": "DAGs",
                                     "bz": ""
                               }
                         ]
                   },
-                  "SetVariable": []
+                  "SetVariable": [
+                        "output|lastbody|regex|"
+                  ]
             }
       ],
-      "PostTime": "2021-04-09 08:51:50",
-      "GobyVersion": "1.8.255"
+      "PostTime": "2021-10-31 15:32:53",
+      "GobyVersion": "1.8.302"
 }
