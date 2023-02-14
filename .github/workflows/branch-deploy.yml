@@ -12,7 +12,7 @@ jobs:
     steps:
       # Execute IssueOps branch deployment logic, hooray!
       # This will be used to "gate" all future steps below and conditionally trigger steps/deployments
-      - uses: github/branch-deploy@vX.X.X # replace X.X.X with the version you want to use
+      - uses: github/branch-deploy@v0.0.0
         id: branch-deploy # it is critical you have an id here so you can reference the outputs of this step
         with:
           trigger: ".deploy" # the trigger phrase to look for in the comment on the pull request
