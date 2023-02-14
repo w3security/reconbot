@@ -1,4 +1,4 @@
-name: "branch deploy demo"
+name: 🚀 branch deploy
 
 # The workflow will execute on new comments on pull requests - example: ".deploy" as a comment
 on:
