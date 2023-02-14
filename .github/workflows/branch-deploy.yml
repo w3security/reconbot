@@ -1,0 +1,38 @@
+name: "branch deploy demo"
+
+# The workflow will execute on new comments on pull requests - example: ".deploy" as a comment
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  demo:
+    if: ${{ github.event.issue.pull_request }} # only run on pull request comments (no need to run on issue comments)
+    runs-on: ubuntu-latest
+    steps:
+      # Execute IssueOps branch deployment logic, hooray!
+      # This will be used to "gate" all future steps below and conditionally trigger steps/deployments
+      - uses: github/branch-deploy@vX.X.X # replace X.X.X with the version you want to use
+        id: branch-deploy # it is critical you have an id here so you can reference the outputs of this step
+        with:
+          trigger: ".deploy" # the trigger phrase to look for in the comment on the pull request
+
+      # Run your deployment logic for your project here - examples seen below
+
+      # Checkout your project repository based on the ref provided by the branch-deploy step
+      - uses: actions/checkout@3.0.2
+        if: ${{ steps.branch-deploy.outputs.continue == 'true' }} # skips if the trigger phrase is not found
+        with:
+          ref: ${{ steps.branch-deploy.outputs.ref }} # uses the detected branch from the branch-deploy step
+
+      # Do some fake "noop" deployment logic here
+      # conditionally run a noop deployment
+      - name: fake noop deploy
+        if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.branch-deploy.outputs.noop == 'true' }} # only run if the trigger phrase is found and the branch-deploy step detected a noop deployment
+        run: echo "I am doing a fake noop deploy"
+
+      # Do some fake "regular" deployment logic here
+      # conditionally run a regular deployment
+      - name: fake regular deploy
+        if: ${{ steps.branch-deploy.outputs.continue == 'true' && steps.branch-deploy.outputs.noop != 'true' }} # only run if the trigger phrase is found and the branch-deploy step detected a regular deployment
+        run: echo "I am doing a fake regular deploy"
